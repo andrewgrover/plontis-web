@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plontis - Get Paid When AI Uses Your Content</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 32px;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffc107;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .step {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .step p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Value Proposition */
+        .value-prop {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .value-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .value-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .value-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .value-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .pricing-preview {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .pricing-preview h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .pricing-examples {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .pricing-example {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .pricing-example:last-child {
+            border-bottom: none;
+        }
+        
+        .example-type {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .example-value {
+            font-weight: 700;
+            color: #28a745;
+            font-size: 1.1rem;
+        }
+        
+        /* Timeline */
+        .timeline {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+        
+        .timeline-date {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            white-space: nowrap;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Evidence Section */
+        .evidence {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .evidence-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .evidence-card h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .evidence-card .amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        
+        .evidence-card .description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+        
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .faq-answer {
+            padding: 0 25px 25px;
+            color: #666;
+            line-height: 1.7;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #dc3545;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #ffc107;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🛡️</div>
+                    PLONTIS
+                </a>
+                <nav>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#timeline">Timeline</a>
+                    <a href="#evidence">Market Evidence</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI is Using Your Content.<br>Start Getting Paid.</h1>
+                <p class="hero-subtitle">
+                    OpenAI, Google, and Anthropic are training on your content right now. 
+                    Plontis detects when AI bots access your work and helps you get compensated.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">$23M</span>
+                        <span class="stat-label">Wiley's recent AI licensing deal</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$130-575</span>
+                        <span class="stat-label">Per image (Getty Images rates)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$2-50</span>
+                        <span class="stat-label">Per article access (market rates)</span>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Install Free Plugin</a>
+                    <a href="#evidence" class="btn btn-secondary">See Market Evidence</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How Plontis Works</h2>
+                <p class="section-subtitle">
+                    Three simple steps to start tracking and monetizing your content
+                </p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Detect AI Bots</h3>
+                    <p>Our WordPress plugin automatically detects when GPTBot, ClaudeBot, Google-Extended, and other AI bots access your content. Get real-time alerts with accurate market-based valuations.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Build Evidence</h3>
+                    <p>Every bot visit is logged with timestamps, IP addresses, and content accessed. Build a comprehensive portfolio showing exactly how AI companies are using your work.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Compensated</h3>
+                    <p>Join our licensing marketplace to connect with AI companies, or use your evidence to negotiate direct deals. We help facilitate fair compensation based on real market rates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <div class="value-grid">
+                <div class="value-content">
+                    <h2>Your Content is Worth More Than You Think</h2>
+                    <p>AI companies are paying millions for quality training data. Publishers like Wiley ($23M), Taylor & Francis ($10M), and news organizations are already getting compensated.</p>
+                    
+                    <ul class="value-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Real-time detection of OpenAI, Google, Anthropic, and Meta bots</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Industry-accurate valuations based on Getty Images, Reuters, and academic publishing rates</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Legal evidence collection for licensing negotiations</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Direct connection to AI companies seeking licensed content</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-preview">
+                    <h3>Market-Based Valuation Examples</h3>
+                    <div class="pricing-examples">
+                        <div class="pricing-example">
+                            <span class="example-type">Technical Tutorial</span>
+                            <span class="example-value">$15-75</span>
+                        </div>
+                        <div class="pricing-example">
+                            <span class="example-type">Research Article</span>
+                            <span class="example-value">$25-150</span>
+                        </div>
+                        <div class="pricing-example">
+                            <span class="example-type">News Article</span>
+                            <span class="example-value">$5-45</span>
+                        </div>
+                        <div class="pricing-example">
+                            <span class="example-type">High-Quality Image</span>
+                            <span class="example-value">$130-575</span>
+                        </div>
+                        <div class="pricing-example">
+                            <span class="example-type">Code Repository</span>
+                            <span class="example-value">$50-500</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">
+                        <em>Values based on Getty Images, Reuters syndication, academic publishing APCs, and recent AI licensing deals.</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="timeline">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">When Will You Get Paid?</h2>
+                <p class="section-subtitle">Our roadmap to creator compensation</p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-date">Now</div>
+                    <div class="timeline-content">
+                        <h3>Start Building Evidence</h3>
+                        <p>Install our free plugin and begin documenting AI bot activity. Every detection builds your licensing portfolio and strengthens your negotiating position.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Q1 2025</div>
+                    <div class="timeline-content">
+                        <h3>Licensing Marketplace Beta</h3>
+                        <p>Join our marketplace where AI companies can license content directly from creators. Early adopters with strong portfolios get priority access to licensing opportunities.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Q2 2025</div>
+                    <div class="timeline-content">
+                        <h3>Automated Payments Launch</h3>
+                        <p>Begin receiving monthly payments based on AI bot usage. Revenue sharing starts with verified, high-value content portfolios.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Q3 2025</div>
+                    <div class="timeline-content">
+                        <h3>Full Platform Rollout</h3>
+                        <p>All qualified creators receive compensation. Scale to support millions of content creators worldwide with transparent, market-rate payments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence Section -->
+    <section id="evidence" class="evidence">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Market is Already Paying</h2>
+                <p class="section-subtitle">AI companies are spending billions on training data - here's the proof</p>
+            </div>
+            
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <h4>Wiley Publishing Deal</h4>
+                    <div class="amount">$23 Million</div>
+                    <p class="description">Academic publisher licensing agreement for AI training data access</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>Taylor & Francis + Microsoft</h4>
+                    <div class="amount">$10 Million</div>
+                    <p class="description">Multi-year deal for academic content licensing to AI systems</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>Getty Images Standard Rate</h4>
+                    <div class="amount">$130-575</div>
+                    <p class="description">Per image for commercial licensing (current market rates)</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>News Syndication</h4>
+                    <div class="amount">$35/month</div>
+                    <p class="description">Professional news access subscriptions (Reuters, Bloomberg)</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>Academic Article Access</h4>
+                    <div class="amount">$20-60</div>
+                    <p class="description">Per article download fees at major publishers</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>Music Licensing (ASCAP)</h4>
+                    <div class="amount">$250-2000</div>
+                    <p class="description">Annual business licensing rates for commercial use</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do you know AI companies will pay?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>They're already paying. Wiley received $23M, Taylor & Francis got $10M, and Associated Press, Axel Springer, and Le Monde have all signed licensing deals with OpenAI. The legal and business precedent is established - AI companies recognize they need licensed content.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        When will I start getting paid?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our licensing marketplace launches in Q1 2025, with automated payments beginning Q2 2025. However, you can start building evidence and negotiating directly with AI companies immediately using the data our plugin provides.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How much can I expect to earn?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Earnings depend on your content quality, volume, and AI bot activity. Based on current market rates: high-quality articles ($25-150), technical tutorials ($15-75), images ($130-575). Most creators with substantial content portfolios can expect $500-5000+ annually.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is this legal? What about fair use?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, completely legal. While fair use exists, commercial AI training often exceeds fair use boundaries. Major AI companies are proactively signing licensing deals to avoid legal risks. Copyright holders have every right to seek compensation for commercial use of their work.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if I don't have much content?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Every content creator benefits. Even smaller portfolios can be valuable - our plugin helps you understand which content is most valuable to AI companies so you can create more strategically. Plus, you can join collective licensing pools for better negotiating power.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does the plugin work technically?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our WordPress plugin detects AI bot user agents (GPTBot, ClaudeBot, Google-Extended, etc.) and logs their activity. It analyzes your content quality, calculates market-based valuations, and provides detailed reports. All data stays on your server - we just help you understand and act on it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Plontis</h3>
+                    <p>Empowering content creators to get fair compensation when AI companies use their work. Join the movement for creator rights in the AI economy.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <a href="#">WordPress Plugin</a><br>
+                    <a href="#">Licensing Marketplace</a><br>
+                    <a href="#">Market Data</a><br>
+                    <a href="#">Documentation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
